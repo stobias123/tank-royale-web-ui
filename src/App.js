@@ -8,7 +8,6 @@ function App() {
     let height = 600;
     let botList = [];
 
-    const gameSetup = {"bots":[{"host":"172.17.0.1","port":63210,"name":"bot2","version":"1.0","authors":["stobias"],"countryCodes":["US"],"gameTypes":["1v1","melee","classic"]},{"host":"172.17.0.1","port":63208,"name":"bot1","version":"1.0","authors":["stobias"],"countryCodes":["US"],"gameTypes":["1v1","melee","classic"]}],"type":"BotListUpdate"}
     const draw = (ctx, frameCount) => {
         ctx.canvas.width = width;
         ctx.canvas.height = height;
