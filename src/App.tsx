@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import Canvas from './components/canvas'
+import socket from './socket'
+import ObserverHandshake from './types/observerHandshake'
+import {ReactComponent as Tank} from './assets/Tank.svg';
+import {TickEventForObserver} from "./types/tickEventForObserver";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  let width = 800;
+  let height = 600;
+  const image = new Image();
+  const [isConnected, setIsConnected] = useState(socket);
+
+  return <Canvas />
 }
 
-export default App;
+export default App
