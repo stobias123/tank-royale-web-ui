@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import Battlefield from './battlefield'
 import {TickEventForObserver} from "../types/tickEventForObserver";
-import socket from "../socket";
 import ObserverHandshake from "../types/observerHandshake";
 
-const Canvas = () => {
+//  ({botState}: { botState: BotStateWithID })
+const Canvas = ( {socketUrl}: {socketUrl: string}) => {
     const style = {
         border: '1px solid black',
     };
+    const socket = new WebSocket(socketUrl);
 
      let dummyEvent: TickEventForObserver = {
          type: "tickEvent",
@@ -23,6 +24,7 @@ const Canvas = () => {
     socket.onmessage = function (evt) {
         var received_msg = JSON.parse(evt.data);
         if( received_msg.type == 'ServerHandshake') {
+            ObserverHandshake.sessionId = received_msg['sessionId']
             let jsonstr = JSON.stringify(ObserverHandshake)
             console.log(jsonstr)
             socket.send(jsonstr)
